@@ -4,7 +4,7 @@
 // typedef std::string str;
 //typedef can be used as "using" keyword
 //using str = std::string;
-using str= std::string;
+using str = std::string;
 
 int main(){
 
