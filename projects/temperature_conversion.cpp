@@ -1,9 +1,17 @@
 #include <iostream>
 
+double ctof(double c){
+    return (c*9/5) +32;
+}
+
+double ftoc(double f){
+    return (f-32)* 5/9;
+}
+
 int main(){
 
     char unit;
-    double temp;
+    float temp;
 
     std::cout << "enter unit you wait to convert from (C/F)- ";
     std::cin >> unit;
@@ -13,10 +21,10 @@ int main(){
         std::cin >> temp;
 
         if (unit == 'C'){
-            std::cout << "temperature in F is " << (temp * 9.0/5.0) + 32 << std::endl;
+            std::cout << ctof(temp) << std::endl;
         }
     else if (unit == 'F') {
-        std::cout << "temperature in C is " << (temp - 32) * (5.0/9.0) << std::endl;
+        std::cout << ftoc(temp) << std::endl;
     }
     }
     else{
