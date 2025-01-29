@@ -1,5 +1,8 @@
 #include <iostream>
 
+#include <limits>
+
+
 void printboard(char board[3][3]){
     for (int row = 0; row < 3; row++) {
         for (int col = 0; col < 3; col++) {
@@ -59,25 +62,27 @@ int main() {
     char player = 'X';
 
     // game loop
-    do {
+     while (!isfilled(board) && !win(board)){
         printboard(board);
         
         std::cout << "enter position(1-9): ";
         std::cin >> pos;
+        
 
         int row = (pos - 1) / 3;
         int col = (pos - 1) % 3;
 
         if (pos >= 1 && pos <= 9){
-            if (!(board[row][col] == 'X' && !(board[row][col] == 'O'))) {
+            if (!isfilled(board)){ 
                 board[row][col] = player;
                 player =  changePlayer(player);
             }
-        } else{
+        } 
+        else {
             std::cout << "invalid input" << std::endl;
         }
 
-    } while (!isfilled(board) && !win(board));
+    }
 
     printboard(board);
     std::cout << "Game Over" << std::endl;
