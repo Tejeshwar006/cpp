@@ -10,7 +10,7 @@ int main(){
     int dep, with, option;
 
     while (true){
-        std::cout << "*****************\nWelcome to bank of whatever\nselect what you want to do\npress 1 to check balance\npress 2 to deposit money\npress 3 to withdraw money\n*****************\ninput: ";
+        std::cout << "*****************\nWelcome to bank of whatever\nselect what you want to do\npress 1 to check balance\npress 2 to deposit money\npress 3 to withdraw money\npress 4 to exit\n*****************\ninput: ";
         std::cin >> option;
 
         switch(option){
@@ -27,15 +27,12 @@ int main(){
                 std::cin >> with;
                 withdraw(with);
                 break;
+            case 4:
+                std::cout << "Thanks for visiting!!\n*****************" << std::endl;
+                return 0;
             default:
                 std::cout << "invalid input\n*****************" << std::endl;
                 break;
-        }
-        std::cout << "do you want to do another transaction? (y/n): ";
-        char ans;
-        std::cin >> ans;
-        if (ans == 'n'){
-            break;
         }
     }
 
