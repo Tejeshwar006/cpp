@@ -55,37 +55,54 @@ bool win(char board[3][3]){
     return false;
 }
 
+bool isIntegerInput(int &pos) {
+    std::cout << "Enter a position (1-9): ";
+
+    if (!(std::cin >> pos)) {  // Check if input is not an integer
+        std::cin.clear();  // Clear the error flag
+        std::cin.ignore(1000, '\n');  // Discard invalid input
+        std::cout << "Invalid input! Please enter a number between 1 and 9." << std::endl;
+        return false;
+    }
+
+    if (pos >= 1 && pos <= 9) {
+        return true;
+    } else {
+        std::cout << "Invalid range! Enter a number between 1 and 9." << std::endl;
+        return false;
+    }
+}
+
 int main() {
     char board[3][3] = {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
-
-    int pos;
     char player = 'X';
+    int pos;
 
-    // game loop
-     while (!isfilled(board) && !win(board)){
+    // Game loop
+    while (!isfilled(board) && !win(board)) {
         printboard(board);
         
-        std::cout << "enter position(1-9): ";
-        std::cin >> pos;
-        
+        while (!isIntegerInput(pos));  
 
         int row = (pos - 1) / 3;
         int col = (pos - 1) % 3;
 
-        if (pos >= 1 && pos <= 9){
-            if (!isfilled(board)){ 
-                board[row][col] = player;
-                player =  changePlayer(player);
-            }
-        } 
-        else {
-            std::cout << "invalid input" << std::endl;
+        if (board[row][col] == 'X' || board[row][col] == 'O') {
+            std::cout << "Position already occupied! Choose a different one.\n";
+            continue;
         }
 
+        board[row][col] = player;
+        player = changePlayer(player);
     }
 
     printboard(board);
-    std::cout << "Game Over" << std::endl;
+    
+    if (win(board)) {
+        std::cout << "Player " << changePlayer(player) << " won" << std::endl;
+    } else {
+        std::cout << "draw" << std::endl;
+    }
 
     return 0;
 }
