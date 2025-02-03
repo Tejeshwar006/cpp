@@ -47,9 +47,9 @@ int main(){
 
     // Check if the sum is divisible by 10
     if (sum % 10 == 0){
-        cout << "\nValid credit card number"; // If divisible by 10, it's a valid credit card number
+        cout << "\nValid credit card number\n"; // If divisible by 10, it's a valid credit card number
     } else {
-        cout << "\nInvalid credit card number"; // If not, it's an invalid credit card number
+        cout << "\nInvalid credit card number\n"; // If not, it's an invalid credit card number
     }
 
     return 0;
